@@ -6,6 +6,21 @@
 
 ## Usage 
 
+1. Ensure your logged into a running Cloud Foundry
+1. Ensure you have running app
+1. Run your rsync command, using either script as the `rsh` option running app's name as the remote host name:
+```
+# list files in app directory
+rsync --rsh="<./cf-rsh-linux.sh or ./cf-rsh-windows.sh>" <your app name>:app/
+
+# alternative, use `RSYNC_RSH` environment variable
+export RSYNC_RSH=<$PWD/cf-rsh-linux.sh or $PWD/cf-rsh-windows.sh>
+rsync <your app name>:app/
+```
+
+
+## Examples
+
 ### Linux - modify existing app (ruby/nodejs/python)
 1. Use rsync to fetch existing app directory from CF instance
     ```sh
