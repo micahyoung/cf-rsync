@@ -9,7 +9,7 @@
 1. Ensure your logged into a running Cloud Foundry
 1. Ensure you have running app
 1. Run your rsync command, using either script as the `rsh` option running app's name as the remote host name:
-```
+```sh
 # list files in app directory
 rsync --rsh="<./cf-rsh-linux.sh or ./cf-rsh-windows.sh>" <your app name>:app/
 
