@@ -35,4 +35,4 @@
 
 1. Visit the app URL in browser
 
-1. Make changes to app (repulish if needed) and repeat three prior steps to reload
+1. Make changes to app (republish if needed) and repeat three prior steps to reload
