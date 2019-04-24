@@ -61,4 +61,4 @@ rsync <your app name>:app/
 ## Notes
 * For debugging only - `cf restart/push/scale` will discard all `rsync` changes and restore the app state to the original `cf push` state.
 * Apps should be scaled to one instance before use.
-* Windows containers do not contain a `rsync` binary so the `cf-rsh` script will download and extract an msys2 binary to `c:\Users\vcap\deps\cf-rsync\` from the repo on first connection and re-used.
+* Windows containers do not contain a `rsync` binary so the `cf-rsh` script will download and extract a binary from the msys2 repo to `c:\Users\vcap\deps\cf-rsync\` on first connection and re-use it.
