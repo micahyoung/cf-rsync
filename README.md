@@ -24,19 +24,14 @@ rsync <your app name>:app/
 ### Linux - modify existing app (ruby/nodejs/python)
 1. Push app but override healthcheck and start command
     ```sh
-    cf push my-rsync-app -p my-original-app -u none -c 'sleep 99999'
+    cf push my-rsync-app -p my-original-app/ -u none -c 'sleep 99999'
     ```
 
-1. Use rsync to fetch existing app directory from CF instance
-    ```sh
-    rsync --rsh="./cf-rsh-linux.sh" --resursive --verbose my-existing-app:app/ my-app-copy
-    ```
-
-1. Make changes to local my-app-copy directory
+1. Make changes to local `my-original-app` directory
 
 1. Use rsync to upload and overwrite app directory in CF instance
     ```sh
-    rsync --rsh="./cf-rsh-linux.sh" --resursive --verbose my-app-copy/ my-existing-app:app
+    rsync --rsh="./cf-rsh-linux.sh" --resursive --verbose  --delete my-original-app/ my-rsync-app:app
     ```
 
 1. Visit the app URL in browser and see the updated content
@@ -45,21 +40,16 @@ rsync <your app name>:app/
 
 
 ### Windows - modify existing app (hwc)
-1. Push app but override healthcheck and start command
+1. Push app but override healthcheck and start command to ignore when `hwc.exe` 
     ```sh
-    cf push my-rsync-app -p my-original-app -s windows2016 -b hwc_buildpack -u none -c 'powershell Start-Sleep 99999'
-    ```
-  
-1. Use rsync to fetch existing app directory from CF instance
-    ```sh
-    rsync --rsh="./cf-rsh-windows.sh" --resursive --verbose my-rsync-app:app/ my-app
+    cf push my-rsync-app -p my-original-app/ -s windows2016 -b hwc_buildpack -u none -c 'powershell Start-Sleep 99999'
     ```
 
-1. Make changes to local my-app-copy directory (or republish from Visual Studio to app directory)
+1. Make changes to local `my-original-app` directory (or republish from Visual Studio to app directory)
 
 1. Use rsync to copy app directory to CF instance
     ```sh
-    rsync --rsh="./cf-rsh-windows.sh" --resursive --verbose my-app/ my-rsync-app:app
+    rsync --rsh="./cf-rsh-windows.sh" --resursive --verbose --delete my-original-app/ my-rsync-app:app
     ```
 
 1. (Re)Start hwc over cf ssh
@@ -67,4 +57,4 @@ rsync <your app name>:app/
     cf ssh my-rsync-app -c 'taskkill /F /IM "hwc.exe" & app\.cloudfoundry\hwc.exe -appRootPath app'
     ```
 
-1. Visit the app URL in browser
+1. Visit the app URL in browser and see the updated content
