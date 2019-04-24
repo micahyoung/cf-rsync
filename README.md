@@ -1,11 +1,10 @@
 # rsync over cf ssh
 
 ## Requirements
-* Linux/Mac workstation with rsync installed
-* Cloud Foundry (optionally, with Windows Server Core cells)
+* Linux/Mac/Windows-Subsystem-for-Linux workstation with `rsync` installed
+* Cloud Foundry CLI and Foundation (optionally, with Windows Server Core cells)
 
 ## Usage 
-
 1. Ensure you are logged into a running Cloud Foundry
 1. Ensure you have running app
 1. Run your rsync command, using either script as the `rsh` option running app's name as the remote host name:
@@ -23,7 +22,7 @@ rsync <your app name>:app/
 ### Linux - modify existing app (ruby/nodejs/python)
 1. Push app but override healthcheck and start command
     ```sh
-    cf push my-rsync-app -p my-original-app/ -u none -c 'sleep 99999'
+    cf push my-rsync-app -p my-original-app/ -u none
     ```
 
 1. Make changes to local `my-original-app` directory
