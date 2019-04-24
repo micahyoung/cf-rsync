@@ -2,11 +2,11 @@
 
 ## Requirements
 * Linux/Mac workstation with rsync installed
-* Cloud Foundry with Windows 2019 cells
+* Cloud Foundry with Windows Server Core cells
 
 ## Usage 
 
-1. Ensure your logged into a running Cloud Foundry
+1. Ensure you are logged into a running Cloud Foundry
 1. Ensure you have running app
 1. Run your rsync command, using either script as the `rsh` option running app's name as the remote host name:
 ```sh
