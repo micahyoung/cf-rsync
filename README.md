@@ -39,7 +39,7 @@ rsync <your app name>:app/
 
 
 ### Windows - modify existing app (hwc)
-1. Push app but override healthcheck and start command to ignore when `hwc.exe` 
+1. Push app but override healthcheck and start command to ignore when `hwc.exe` restarts
     ```sh
     cf push my-rsync-app -p my-original-app/ -s windows2016 -b hwc_buildpack -u none -c 'powershell Start-Sleep 99999'
     ```
@@ -59,6 +59,6 @@ rsync <your app name>:app/
 1. Visit the app URL in browser and see the updated content
 
 ## Notes
-* Restarting an app will discard all `rsync` changes and restore the app state to the original `cf push` state.
+* For debugging only - `cf restart/push/scale` will discard all `rsync` changes and restore the app state to the original `cf push` state.
 * Apps should be scaled to one instance before use.
 * Windows containers do not contain a `rsync` binary so the `cf-rsh` script will download and extract an msys2 binary to `c:\Users\vcap\deps\cf-rsync\` from the repo on first connection and re-used.
