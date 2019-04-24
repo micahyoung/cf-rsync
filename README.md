@@ -20,7 +20,7 @@ rsync <your app name>:app/
 ## Examples
 
 ### Linux - modify existing app (ruby/nodejs/python)
-1. Push app but override healthcheck
+1. Push functioning original app but override healthcheck
     ```sh
     cf push my-rsync-app -p my-original-app/ -u none
     ```
@@ -38,7 +38,7 @@ rsync <your app name>:app/
 
 
 ### Windows - modify existing app (hwc)
-1. Push app but override healthcheck and start command to ignore when `hwc.exe` restarts
+1. Push functioning original app but override healthcheck and start command to ignore when `hwc.exe` restarts
     ```sh
     cf push my-rsync-app -p my-original-app/ -s windows2016 -b hwc_buildpack -u none -c 'powershell Start-Sleep 99999'
     ```
