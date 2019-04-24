@@ -20,7 +20,7 @@ rsync <your app name>:app/
 ## Examples
 
 ### Linux - modify existing app (ruby/nodejs/python)
-1. Push app but override healthcheck and start command
+1. Push app but override healthcheck
     ```sh
     cf push my-rsync-app -p my-original-app/ -u none
     ```
