@@ -2,7 +2,7 @@
 
 ## Requirements
 * Linux/Mac workstation with rsync installed
-* Cloud Foundry with Windows Server Core cells
+* Cloud Foundry (optionally, with Windows Server Core cells)
 
 ## Usage 
 
