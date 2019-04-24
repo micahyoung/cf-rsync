@@ -18,7 +18,6 @@ export RSYNC_RSH=<$PWD/cf-rsh-linux.sh or $PWD/cf-rsh-windows.sh>
 rsync <your app name>:app/
 ```
 
-
 ## Examples
 
 ### Linux - modify existing app (ruby/nodejs/python)
@@ -58,3 +57,8 @@ rsync <your app name>:app/
     ```
 
 1. Visit the app URL in browser and see the updated content
+
+## Notes
+* Restarting an app will discard all `rsync` changes and restore the app state to the original `cf push` state.
+* Apps should be scaled to one instance before use.
+* Windows containers do not contain a `rsync` binary so the `cf-rsh` script will download and extract an msys2 binary to `c:\Users\vcap\deps\cf-rsync\` from the repo on first connection and re-used.
