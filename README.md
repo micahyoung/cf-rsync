@@ -52,7 +52,7 @@ rsync <your app name>:app/
 
 1. (Re)Start hwc over cf ssh
     ```sh
-    cf ssh my-rsync-app -c 'taskkill /F /IM "hwc.exe" & app\.cloudfoundry\hwc.exe -appRootPath app'
+    cf ssh my-rsync-app -c 'taskkill /F /IM hwc.exe & app\.cloudfoundry\hwc.exe -appRootPath app'
     ```
 
 1. Visit the app URL in browser and see the updated content
