@@ -34,7 +34,7 @@ rsync <your app name>:app/
 
 1. Visit the app URL in browser and see the updated content
 
-* Note: apps languages/buildpacks must support dynamic code/content reloading. If not, the server process may need to be signalled or restarted to reload content.
+* Note: app languages/buildpacks must support dynamic code/content reloading. If not, the server process may need to be signalled or restarted to reload content.
 
 
 ### Windows - modify existing app (hwc)
