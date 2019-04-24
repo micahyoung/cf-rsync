@@ -47,7 +47,7 @@ rsync <your app name>:app/
 
 1. Use rsync to copy app directory to CF instance
     ```sh
-    rsync --rsh="./cf-rsh-windows.sh" --resursive --verbose --delete --exclude="hwc.exe" my-original-app/ my-rsync-app:app
+    rsync --rsh="./cf-rsh-windows.sh" --recursive --verbose --delete --exclude="hwc.exe" my-original-app/ my-rsync-app:app
     ```
 
 1. (Re)Start hwc over cf ssh
