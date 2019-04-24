@@ -38,22 +38,19 @@ rsync <your app name>:app/
 
 
 ### Windows - modify existing app (hwc)
-1. Push functioning original app but override healthcheck and start command to ignore when `hwc.exe` restarts
+1. Push functioning original app
     ```sh
-    cf push my-rsync-app -p my-original-app/ -s windows2016 -b hwc_buildpack -u none -c 'powershell Start-Sleep 99999'
+    cf push my-rsync-app -p my-original-app/ -s windows2016 -b hwc_buildpack
     ```
+    * Can be any app that contains a Web.config and works with HWC
 
-1. Make changes to local `my-original-app` directory (or republish from Visual Studio to app directory)
+1. Make changes to local `my-original-app` directory (or rebuild/republish from Visual Studio to app directory)
 
 1. Use rsync to copy app directory to CF instance
     ```sh
     rsync --rsh="./cf-rsh-windows.sh" --recursive --verbose --delete --exclude="hwc.exe" my-original-app/ my-rsync-app:app
     ```
-
-1. (Re)Start hwc over cf ssh
-    ```sh
-    cf ssh my-rsync-app -c 'taskkill /F /IM hwc.exe & app\.cloudfoundry\hwc.exe -appRootPath app'
-    ```
+    * Note be sure to use a `/` after the source directory path (`my-original-app/`) to copy just its contents
 
 1. Visit the app URL in browser and see the updated content
 
