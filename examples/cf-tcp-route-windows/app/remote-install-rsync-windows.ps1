@@ -13,3 +13,9 @@ if (!(Test-Path "c:\Users\vcap\deps\cf-rsync\usr\bin\rsync.exe")) {
 Write-Output '@echo off
 set PATH=C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;c:\Users\vcap\deps\cf-rsync\usr\bin;%PATH%
 rsync.exe %1 %2 %3 %4 %5 %6 %7' | Out-File -Encoding ASCII "c:\Users\vcap\deps\cf-rsync\rsync.bat"
+
+Write-Output '
+read only = no
+[c]
+path = /c/
+' | Out-File -Encoding ASCII "c:\Users\vcap\deps\cf-rsync\rsyncd.conf"
